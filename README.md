@@ -1,2 +1,2 @@
 # My-Configs-Hyprland
-A repo to storage all of my hyprland configs in case i needed for a future installation.
+A repo to storage all of my hyprland configs in case i need for a future installation.
