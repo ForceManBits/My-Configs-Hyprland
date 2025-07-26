@@ -1,0 +1,90 @@
+{
+  // Define a barra no topo da tela
+  "layer": "top",
+  "position": "top",
+  "modules-left": [
+    "hyprland/workspaces", // ou "sway/workspaces" para Sway
+    "custom/launcher"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+  "group/hardware",
+  "network",
+  "battery",
+  "tray",
+  "pulseaudio",
+  "custom/power"
+],
+
+"group/hardware": {
+  "orientation": "horizontal",
+  "drawer": {
+    "transition-duration": 300
+  },
+  "modules": [
+    "custom/hardware-label",
+    "cpu",
+    "memory"
+  ]
+},
+"custom/hardware-label": {
+  "format": "", // ícone legal para representar hardware, pode trocar pelo que quiser
+  "tooltip-format": "Expandir informações de hardware"
+},
+"cpu": {
+  "format": "CPU: {usage}%",
+  "tooltip": false
+},
+"memory": {
+  "format": "RAM: {used}MiB/{total}MiB",
+  "tooltip": false
+},
+
+
+  // Custom launcher (Exemplo de módulo customizado)
+  "custom/launcher": 
+  {
+    "format": "󰣇",
+    "tooltip": "Abrir Wofi",
+    "on-click": "wofi --show drun",
+    "exec-if": "command -v wofi"
+  },
+
+  "custom/power": {
+  "format": "⏻",
+  "tooltip": "Opções de energia",
+  "on-click": "nwg-bar" // Exemplo: abre menu do nwgbar, mas pode ser outro script/shell
+},
+
+
+
+  // Exemplo de opções extras ajustáveis
+  "clock": {
+    "format": "{:%H:%M:%S  %d/%m/%Y}",
+    "format-alt": "{:%a, %d %b %Y %H:%M}"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "states": {
+      "good": 90,
+      "warning": 30,
+      "critical": 15
+    },
+    "format-icons": ["󰁺", "󰂀", "󰁼", "󰁽"]
+  },
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": "󰈀 {ifname}: {ipaddr}",
+    "format-disconnected": " Descon."
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-icons": ["", "", ""],
+    "on-click": "pavucontrol",
+  "on-click-right": "pwvucontrol", // opcional: outro mixer
+  "on-scroll-up": "pamixer -i 5",
+  "on-scroll-down": "pamixer -d 5"
+  }
+}
